@@ -19,10 +19,23 @@ header {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    text-align: center;
+    align-items: center;
 }
 
 header h1 {
     width: fit-content;
+    font-size: 5rem;
+    line-height: 4rem;
+}
+
+header h3 {
+    padding: 0;
+    opacity: .9;
+}
+
+header p {
+    opacity: .7;
 }
 
 main {
@@ -30,15 +43,28 @@ main {
     flex-direction: column;
     gap: 0.5rem;
     flex: 1;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-.rule-item {
-    display: flex;
-    gap: 1rem;
+.section-title {
+    color: #3e0d76;
 }
 
-.rule-item p:first-of-type {
-    min-width: 60px;
+.challenge-list {
+    text-align: left;
+}
+
+.advice-item {
+    display: grid;
+    border-color: var(--color-primary-transparent);
+    padding: 0.5rem;
+    border-style: solid;
+    border-radius: 25px;
+    margin: 1rem;
+    place-items: center;
+    text-align: center;
 }
 
 h3,
@@ -57,6 +83,7 @@ h3,
     cursor: pointer;
     flex-shrink: 0;
     width: 100%;
+    max-height: 100px;
 }
 
 .inactive {
@@ -73,8 +100,11 @@ h3,
 .plan-card-header {
     display: flex;
     gap: 0.5rem;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: top;
+    max-height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .plan-card-header p:first-of-type,
@@ -94,24 +124,24 @@ h3,
 
 .workout-grid {
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 0.5rem;
     overflow: auto;
 }
 
 .exercise-name {
-    grid-column: span 3 / span 3;
+    grid-column: span 4 / span 4;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
 .exercise-name p {
-    font-weight: 400;
+    font-weight: 00;
 }
 
 .weight-input {
-    grid-column: span 2 / span 2;
+    grid-column: span 1 / span 1;
 }
 
 .workout-button {
@@ -127,7 +157,6 @@ footer {
     padding: 4rem 0 2rem 0;
     text-align: center;
 }
-
 
 input:disabled{
     cursor: not-allowed;
@@ -156,7 +185,7 @@ button.help-icon:hover {
     opacity: 1;
 }
 
-.exercise-info {
+.book-info {
     margin: auto 0;
 }
 

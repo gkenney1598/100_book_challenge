@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { workoutProgram as training_plan } from '../utils/index.js';
-import WorkoutCard from './WorkoutCard.jsx';
+import {bookTitles as bookTitles} from '../utils/index.js'
+import BookCard from './BookCard.jsx';
 
 export default function Grid() {
   const [ savedWorkouts, setSavedWorkouts ] = useState(null);
@@ -40,7 +41,7 @@ export default function Grid() {
 
   return (
     <div className="training-plan-grid">
-      {Object.keys(training_plan).map((workout, workoutIndex) => {
+      {Object.keys(bookTitles).map((title, workoutIndex) => {
         const isLocked = workoutIndex === 0 ?
         false :
         !completedWorkouts.includes(`${workoutIndex - 1}`)
@@ -51,7 +52,7 @@ export default function Grid() {
 
         if (workoutIndex === selectedWorkout) {
           return (
-            <WorkoutCard key={workoutIndex} trainingPlan={trainingPlan} workoutIndex={workoutIndex} dayNum={dayNum} icon={icon} handleComplete={handleComplete} handleSave={handleSave} savedWeights={savedWorkouts?.[workoutIndex]?.weights}/>
+            <BookCard bookTitle={bookTitles[workoutIndex]} key={workoutIndex} trainingPlan={trainingPlan} workoutIndex={workoutIndex} dayNum={dayNum} icon={icon} handleComplete={handleComplete} handleSave={handleSave} savedWeights={savedWorkouts?.[workoutIndex]?.weights}/>
           )
         }
 
@@ -60,13 +61,12 @@ export default function Grid() {
             if (isLocked) { return }
             setSelectedWorkout(workoutIndex)
           }} className={'card plan-card ' + (isLocked ? 'inactive' : '')}key={workoutIndex}>
-            <div className='plan-card-header'>
-              <p>Book {dayNum}</p>
-            </div>
             {isLocked ? (
               <i className='fa-solid fa-lock'></i>
-            ) : (icon)}
-
+            ) : null}
+            <div className='plan-card-header'>
+              <p>{dayNum}: {bookTitles[workoutIndex]}</p>
+            </div>
           </button>
         )
       })}

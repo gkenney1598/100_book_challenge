@@ -388,6 +388,10 @@ export const workoutProgram = {
             { name: "Hip thrust", sets: 3, reps: 12 },
             { name: "Leg extension", sets: 3, reps: 15 }
         ]
+    },
+    30: {
+        warmup: [],
+        workout: [],
     }
 }
 
@@ -437,4 +441,519 @@ export const exerciseDescriptions = {
     "Calf raises": "Stand on the Smith machine with the bar on your shoulders, or in a leg press with your legs almost straight, raise your heels to engage your calves, and then lower them back down.",
     "Good girls / bad girls": "Using the adductor/abductor machine, move your legs together (adductor) or apart (abductor) to target the inner and outer thighs.",
 }
+
+export const bookTitles = {
+    0: "My Brilliant Friend",
+    1: "The Warmth of Other Suns",
+    2: "Wolf Hall",
+    3: "The Known World",
+    4: "The Corrections",
+    5: "2666",
+    6: "The Underground Railroad",
+    7: "Austerlitz",
+    8: "Never Let Me Go",
+    9: "Gilead",
+    10: "The Brief Wondrous Life of Oscar Wao",
+    11: "The Year of Magical Thinking",
+    12: "The Road",
+    13: "Outline",
+    14: "Pachinko",
+    15: "The Amazing Adventures of Kavalier & Clay",
+    16: "The Sellout",
+    17: "Lincoln in the Bardo",
+    18: "Say Nothing",
+    19: "Erasure",
+    20: "Evicted",
+    21: "Behind the Beautiful Forevers",
+    22: "Hateship, Friendship, Courtship, Loveship, Marriage",
+    23: "The Overstory",
+    24: "Random Family",
+    25: "Atonement",
+    26: "Americanah",
+    27: "Cloud Atlas",
+    28: "The Last Samurai",
+    29: "Sing, Unburied, Sing",
+    30: "White Teeth",
+    31: "The Line of Beauty",
+    32: "Salvage the Bones",
+    33: "Citizen",
+    34: "Fun Home",
+    35: "Between the World and Me",
+    36: "The Years",
+    37: "The Savage Detectives",
+    38: "A Visit From the Goon Squad",
+    39: "H Is for Hawk",
+    40: "Small Things Like These",
+    41: "A Brief History of Seven Killings",
+    42: "Postwar",
+    43: "The Fifth Season",
+    44: "The Argonauts",
+    45: "The Goldfinch",
+    46: "A Mercy",
+    47: "Persepolis",
+    48: "The Vegetarian",
+    49: "Trust",
+    50: "Life After Life",
+    51: "Train Dreams",
+    52: "Runaway",
+    53: "Tenth of December",
+    54: "The Looming Tower",
+    55: "The Flamethrowers",
+    56: "Nickel and Dimed",
+    57: "Stay True",
+    58: "Middlesex",
+    59: "Heavy",
+    60: "Demon Copperhead",
+    61: "10:04",
+    62: "Veronica",
+    63: "The Great Believers",
+    64: "The Plot Against America",
+    65: "We the Animals",
+    66: "Far From the Tree",
+    67: "The Friend",
+    68: "The New Jim Crow",
+    69: "All Aunt Hagar’s Children",
+    70: "The Copenhagen Trilogy",
+    71: "Secondhand Time",
+    72: "The Passage of Power",
+    73: "Olive Kitteridge",
+    74: "Exit West",
+    75: "Tomorrow, and Tomorrow, and Tomorrow",
+    76: "An American Marriage",
+    77: "Septology",
+    78: "A Manual for Cleaning Women",
+    79: "The Story of the Lost Child",
+    80: "Pulphead",
+    81: "Hurricane Season",
+    82: "When We Cease to Understand the World",
+    83: "The Emperor of All Maladies",
+    84: "Pastoralia",
+    85: "Frederick Douglass",
+    86: "Detransition, Baby",
+    87: "The Collected Stories of Lydia Davis",
+    88: "The Return",
+    89: "The Sympathizer",
+    90: "The Human Stain",
+    91: "The Days of Abandonment",
+    92: "Station Eleven",
+    93: "On Beauty",
+    94: "Bring Up the Bodies",
+    95: "Wayward Lives, Beautiful Experiments",
+    96: "Men We Reaped",
+    97: "Bel Canto",
+    98: "How to Be Both",
+    99: "Tree of Smoke",
+}
+
+//add pages
+// export const books = {
+//     0: {
+//         book: "My Brilliant Friend",
+//         author: "Elena Ferrante",
+//         year: "2012",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     1: {
+//         book: "The Warmth of Other Suns",
+//         author: "Isabel Wilkerson",
+//         year: "2010",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     2: {
+//         book: "Wolf Hall",
+//         author: "Hilary Mantel",
+//         year: "2009",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     3: {
+//         book: "The Known World",
+//         author: "Edward P. Jones",
+//         year: "2003",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     4: {
+//         book: "The Corrections",
+//         author: "Jonathan Franzen",
+//         year: "2001",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     5: {
+//         book: "2666",
+//         author: "Roberto Bolaño",
+//         year: "2008",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     6: {
+//         book: "The Underground Railroad",
+//         author: "Colson Whitehead",
+//         year: "2016",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     7: {
+//         book: "Austerlitz",
+//         author: "W.G. Sebald",
+//         year: "2001",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     8: {
+//         book: "Never Let Me Go",
+//         author: "Kazuo Ishiguro",
+//         year: "2005",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     9: {
+//         book: "Gilead",
+//         author: "Marilynne Robinson",
+//         year: "2004",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     10: {
+//         book: "The Brief Wondrous Life of Oscar Wao",
+//         author: "Junot Díaz",
+//         year: "2007",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     11: {
+//         book: "The Year of Magical Thinking",
+//         author: "Joan Didion",
+//         year: "2005",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     12: {
+//         book: "The Road",
+//         author: "Cormac McCarthy",
+//         year: "2006",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     13: {
+//         book: "Outline",
+//         author: "Rachel Cusk",
+//         year: "2015",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     14: {
+//         book: "Pachinko",
+//         author: "Min Jin Lee",
+//         year: "2017",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     15: {
+//         book: "The Amazing Adventures of Kavalier & Clay",
+//         author: "Michael Chabon",
+//         year: "2000",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     16: {
+//         book: "The Sellout",
+//         author: "Paul Beatty",
+//         year: "2015",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     17: {
+//         book: "Lincoln in the Bardo",
+//         author: "George Saunders",
+//         year: "2017",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     18: {
+//         book: "Say Nothing",
+//         author: "Patrick Radden Keefe",
+//         year: "2019",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     19: {
+//         book: "Erasure",
+//         author: "Percival Everett",
+//         year: "2001",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     20: {
+//         book: "Evicted",
+//         author: "Matthew Desmond",
+//         year: "2016",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     21: {
+//         book: "Behind the Beautiful Forevers",
+//         author: "Katherine Boo",
+//         year: "2012",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     22: {
+//         book: "Hateship, Friendship, Courtship, Loveship, Marriage",
+//         author: "Alice Munro",
+//         year: "2001",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     23: {
+//         book: "The Overstory",
+//         author: "Richard Powers",
+//         year: "2018",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     24: {
+//         book: "Random Family",
+//         author: "Adrian Nicole LeBlanc",
+//         year: "2003",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     25: {
+//         book: "Atonement",
+//         author: "Ian McEwan",
+//         year: "2002",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     26: {
+//         book: "Americanah",
+//         author: "Chimamanda Ngozi Adichie",
+//         year: "2013",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     27: {
+//         book: "Cloud Atlas",
+//         author: "David Mitchell",
+//         year: "2004",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     28: {
+//         book: "The Last Samurai",
+//         author: "Helen DeWitt",
+//         year: "2000",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     29: {
+//         book: "Sing, Unburied, Sing",
+//         author: "Jesmyn Ward",
+//         year: "2017",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     30: {
+//         book: "White Teeth",
+//         author: "Zadie Smith",
+//         year: "2000",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     31: {
+//         book: "The Line of Beauty",
+//         author: "Alan Hollinghurst",
+//         year: "2004",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     32: {
+//         book: "Salvage the Bones",
+//         author: "Jesmyn Ward",
+//         year: "2011",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     33: {
+//         book: "Citizen",
+//         author: "Claudia Rankine",
+//         year: "2014",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     34: {
+//         book: "Fun Home",
+//         author: "Alison Bechdel",
+//         year: "2006",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     35: {
+//         book: "Between the World and Me",
+//         author: "Ta-Nehisi Coates",
+//         year: "2015",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     36: {
+//         book: "The Years",
+//         author: "Annie Ernaux",
+//         year: "2018",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     37: {
+//         book: "The Savage Detectives",
+//         author: "Roberto Bolaño",
+//         year: "2007",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     38: {
+//         book: "A Visit From the Goon Squad",
+//         author: "Jennifer Egan",
+//         year: "2010",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     39: {
+//         book: "H Is for Hawk",
+//         author: "Helen Macdonald",
+//         year: "2015",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     40: {
+//         book: "Small Things Like These",
+//         author: "Claire Keegan",
+//         year: "2021",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     41: {
+//         book: "A Brief History of Seven Killings",
+//         author: "Marlon James",
+//         year: "2014",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     42: {
+//         book: "Postwar",
+//         author: "Tony Judt",
+//         year: "2005",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     43: {
+//         book: "The Fifth Season",
+//         author: "N.K. Jemisin",
+//         year: "2015",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     44: {
+//         book: "The Argonauts",
+//         author: "Maggie Nelson",
+//         year: "2015",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     45: {
+//         book: "The Goldfinch",
+//         author: "",
+//         year: "",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     46: {
+//         book: "",
+//         author: "",
+//         year: "",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     47: {
+//         book: "",
+//         author: "",
+//         year: "",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     48: {
+//         book: "",
+//         author: "",
+//         year: "",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     49: {
+//         book: "",
+//         author: "",
+//         year: "",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },
+//     50: {
+//         book: "",
+//         author: "",
+//         year: "",
+//         pages: "",
+//         description: "",
+//         link: ""
+//     },    
+// }
 

@@ -25,14 +25,15 @@
     --background-gradient: '';
     --background-muted: #f8fafc;
 
-    --color-primary: #030615;
+    --color-primary: #0F0E47;
+    --color-primary-transparent: #0f0e4772;
     --color-secondary: '';
     --color-tertiary: '';
     --color-accent: '';
     --color-compliment: '';
     --color-gradient: '';
     --color-muted: ;
-    --color-link: #2563eb;
+    --color-link: #8686Ac;
     --color-link-transparent: rgba(37, 99, 235, 0.1);
 
     --color-success: '';
@@ -41,8 +42,8 @@
     --color-info: '';
     --color-highlight: #fef9c3;
 
-    --gradient-start: #9580ff;
-    --gradient-end: #80ffea;
+    --gradient-start: #4b6cb7;
+    --gradient-end: #182848;
 
     --border-primary: #f1f5f9;
     --border-secondary: #bed1e7;
