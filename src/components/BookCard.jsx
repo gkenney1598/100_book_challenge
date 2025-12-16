@@ -27,11 +27,11 @@ export default function BookCard(props) {
   return (
     <div className="book-container">
       <div className="book-card card">
-        <div className="plan-card-header">
+        <div className="book-card-header">
           <p>Day {dayNum}</p>
           <i className='fa-solid fa-book'></i>
         </div>
-        <div className="plan-card-header">
+        <div className="book-card-header">
           <h2><b>{bookTitle}</b></h2> 
         </div>
       </div>
@@ -76,7 +76,7 @@ export default function BookCard(props) {
 
       <progress value={(progress?.["Pages"] || 0) / bookInfo[3]["Pages"] * 100} max="100"></progress>
 
-      <div className="workout-buttons">
+      <div className="book-buttons">
         <button onClick={() => {
           handleSave(bookIndex, { progress })
         }}>Save & Exit</button>

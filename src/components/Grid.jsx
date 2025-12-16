@@ -1,27 +1,26 @@
 import { useEffect, useState } from 'react';
-import { workoutProgram as training_plan } from '../utils/index.js';
 import {bookTitles as bookTitles} from '../utils/index.js'
 import BookCard from './BookCard.jsx';
 
 export default function Grid() {
-  const [ savedWorkouts, setSavedWorkouts ] = useState(null);
-  const [ selectedWorkout, setSelectedWorkout ] = useState(null);
-  const completedWorkouts = Object.keys(savedWorkouts || {}).filter((val) => {
-    const entry = savedWorkouts[val]
+  const [ savedProgress, setSavedProgress ] = useState(null);
+  const [ selectedBook, setSelectedBook ] = useState(null);
+  const completedBooks = Object.keys(savedProgress || {}).filter((val) => {
+    const entry = savedProgress[val]
     return entry.isComplete
   });
 
   function handleSave(index, data){
     const newObj = {
-      ...savedWorkouts,
+      ...savedProgress,
       [index]: {
         ...data,
-        isComplete: !!data.isComplete || !!savedWorkouts?.[index]?.isComplete
+        isComplete: !!data.isComplete || !!savedProgress?.[index]?.isComplete
       }
     }
-    setSavedWorkouts(newObj)
+    setSavedProgress(newObj)
     localStorage.setItem('30_day_challenge', JSON.stringify(newObj))
-    setSelectedWorkout(null)
+    setSelectedBook(null)
   }
 
   function handleComplete(index, data){
@@ -36,36 +35,34 @@ export default function Grid() {
     if (localStorage.getItem('30_day_challenge')){
       savedData = JSON.parse(localStorage.getItem('30_day_challenge'))
     }
-    setSavedWorkouts(savedData)
+    setSavedProgress(savedData)
   }, [])
 
   return (
-    <div className="training-plan-grid">
-      {Object.keys(bookTitles).map((title, workoutIndex) => {
-        const isLocked = workoutIndex === 0 ?
+    <div className="reading-plan-grid">
+      {Object.keys(bookTitles).map((title, bookIndex) => {
+        const isLocked = bookIndex === 0 ?
         false :
-        !completedWorkouts.includes(`${workoutIndex - 1}`)
+        !completedBooks.includes(`${bookIndex - 1}`)
 
-        const trainingPlan = training_plan[workoutIndex]
-        const dayNum = ((workoutIndex / 8) <=1) ? '0' + (workoutIndex + 1) : workoutIndex + 1 
-        const icon = <i className='fa-solid fa-book'></i>
+        const dayNum = ((bookIndex / 8) <=1) ? '0' + (bookIndex + 1) : bookIndex + 1 
 
-        if (workoutIndex === selectedWorkout) {
+        if (bookIndex === selectedBook) {
           return (
-            <BookCard bookTitle={bookTitles[workoutIndex]} key={workoutIndex} trainingPlan={trainingPlan} workoutIndex={workoutIndex} dayNum={dayNum} icon={icon} handleComplete={handleComplete} handleSave={handleSave} savedWeights={savedWorkouts?.[workoutIndex]?.weights}/>
+            <BookCard bookTitle={bookTitles[bookIndex]} key={bookIndex} bookIndex={bookIndex} dayNum={dayNum} handleComplete={handleComplete} handleSave={handleSave} savedProgress={savedProgress?.[bookIndex]?.progress}/>
           )
         }
 
         return (
           <button onClick={() => {
             if (isLocked) { return }
-            setSelectedWorkout(workoutIndex)
-          }} className={'card plan-card ' + (isLocked ? 'inactive' : '')}key={workoutIndex}>
+            setSelectedBook(bookIndex)
+          }} className={'card book-card ' + (isLocked ? 'inactive' : '')}key={bookIndex}>
             {isLocked ? (
               <i className='fa-solid fa-lock'></i>
             ) : null}
-            <div className='plan-card-header'>
-              <p>{dayNum}: {bookTitles[workoutIndex]}</p>
+            <div className='book-card-header'>
+              <p>{dayNum}: {bookTitles[bookIndex]}</p>
             </div>
           </button>
         )
