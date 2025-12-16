@@ -1,18 +1,15 @@
 import React, { useState } from 'react'
-import Modal from './Modal'
 
-export default function WorkoutCard(props) {
-  const { bookTitle, workoutIndex, dayNum, icon, savedWeights, handleSave, handleComplete } = props;
+export default function BookCard(props) {
+  const { bookTitle, bookIndex, dayNum, savedProgress, handleSave, handleComplete } = props;
+  const [ progress, setProgress ] = useState(savedProgress || {});
 
-  const [showExerciseDescription, setShowExerciseDescription] = useState(null);
-  const [ weights, setWeights ] = useState(savedWeights || {});
-
-  function handleAddWeight(title, weight){
+  function handleAddProgress(title, newProgress){
     const newObj = {
-      ...weights,
-      [title]: weight
+      ...progress,
+      [title]: newProgress
     }
-    setWeights(newObj)
+    setProgress(newObj)
   }
 
   // TODO: api call for book info
@@ -28,24 +25,20 @@ export default function WorkoutCard(props) {
   const progressSections = ["Pages", "Stars"]
   
   return (
-    <div className="workout-container">
-      {showExerciseDescription && (<Modal showExerciseDescription={showExerciseDescription} handleCloseModal={() => { 
-        setShowExerciseDescription(null)
-      }}/>
-    )}
-      <div className="workout-card card">
+    <div className="book-container">
+      <div className="book-card card">
         <div className="plan-card-header">
           <p>Day {dayNum}</p>
-          {icon}
+          <i className='fa-solid fa-book'></i>
         </div>
         <div className="plan-card-header">
-          {/* replace with title */}
           <h2><b>{bookTitle}</b></h2> 
         </div>
       </div>
 
       <div>
-        <div className="exercise-name">
+        <div className="book-name">
+          <i class="fa-solid fa-circle-info"></i>
           <h4>Info</h4>
         </div>
         <table>
@@ -62,35 +55,34 @@ export default function WorkoutCard(props) {
         </table>
       </div>
 
-      <div className="workout-grid">
-        <div className="exercise-name">
+      <div className="book-grid">
+        <div className="book-name">
+          <i class="fa-solid fa-book-open-reader"></i>
           <h4>Track Progress</h4>
         </div>
         {progressSections.map((section, index) => {
           return (
             <React.Fragment key={index}>
-              <div className="exercise-name">
+              <div className="book-name">
                 <p>{section}</p>
               </div>
-              <input value={weights?.[section] || ''} onChange={(e) => {
-                handleAddWeight(section, e.target.value,) 
+              <input value={progress?.[section] || ''} onChange={(e) => {
+                handleAddProgress(section, e.target.value,) 
               }} className="weight-input" placeholder="0" />
             </React.Fragment>
           )
         })}
       </div>
 
-      <progress value={(weights?.["Pages"] || 0) / bookInfo[3]["Pages"] * 100} max="100"></progress>
+      <progress value={(progress?.["Pages"] || 0) / bookInfo[3]["Pages"] * 100} max="100"></progress>
 
       <div className="workout-buttons">
         <button onClick={() => {
-          handleSave(workoutIndex, { weights })
+          handleSave(bookIndex, { progress })
         }}>Save & Exit</button>
         <button onClick={ () => {
-          handleComplete(workoutIndex, { weights })
-        }}disabled={Object.keys(weights).length !== progressSections.length}>Complete</button>
-        {console.log(Object.keys(weights).length)}
-        {console.log(progressSections.length)}
+          handleComplete(bookIndex, { progress })
+        }}disabled={Object.keys(progress).length !== progressSections.length}>Complete</button>
       </div> 
 
     </div> 
