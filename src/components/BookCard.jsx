@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 
 export default function BookCard(props) {
-  const { bookTitle, bookIndex, dayNum, savedProgress, handleSave, handleComplete } = props;
+  const { bookTitle, bookIndex, dayNum, savedProgress, handleSave, handleComplete, bookJson } = props;
   const [ progress, setProgress ] = useState(savedProgress || {});
+  const [ bookInfo, setBookInfo ] = useState(null)
 
   function handleAddProgress(title, newProgress){
     const newObj = {
@@ -13,13 +14,24 @@ export default function BookCard(props) {
   }
 
   // TODO: api call for book info
-  const bookInfo = [
-    {Author: "auther author"},
-    {Description: "book description placeholder, will replace with blurb of book. will be a longer section"},
-    {Year: "2xxx"},
-    {Pages: "300"},
-    {Link: "link to buy the book"}
-  ]
+  // const bookInfo = [
+  //   {Author: "auther author"},
+  //   {Description: "book description placeholder, will replace with blurb of book. will be a longer section"},
+  //   {Year: "2xxx"},
+  //   {Pages: "300"},
+  //   {Link: "link to buy the book"}
+  // ]
+  function processBookInfo(){
+    const bookData = JSON.parse(bookJson)
+    const book = [
+      {Author: bookData.contributions[1].author},
+      {Description: bookData.description},
+      {Year: bookData.release_year},
+      {Pages: bookData.pages},
+      {Link: "link to buy the book"}
+    ]
+    setBookInfo(book)
+  }
 
   const bookSections = ["Author", "Description", "Year", "Pages", "Link"]
   const progressSections = ["Pages", "Stars"]

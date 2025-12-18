@@ -1,6 +1,6 @@
 export const bookTitles = {
     0: "My Brilliant Friend",
-    1: "The Warmth of Other Suns",
+    1: "The Warmth of Other Suns: The Epic Story of America's Great Migration",
     2: "Wolf Hall",
     3: "The Known World",
     4: "The Corrections",
