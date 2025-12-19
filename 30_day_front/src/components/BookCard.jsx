@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 export default function BookCard(props) {
-  const { bookTitle, bookIndex, dayNum, savedProgress, handleSave, handleComplete, bookJson } = props;
+  const { bookTitle, bookIndex, dayNum, savedProgress, handleSave, handleComplete } = props;
   const [ progress, setProgress ] = useState(savedProgress || {});
   const [ bookInfo, setBookInfo ] = useState(null)
+  const [isLoading, setIsLoading ] = useState(true)
+  const [ bookJsonData, setBookJsonData ] = useState(null)
 
   function handleAddProgress(title, newProgress){
     const newObj = {
@@ -13,31 +16,38 @@ export default function BookCard(props) {
     setProgress(newObj)
   }
 
-  // TODO: api call for book info
-  // const bookInfo = [
-  //   {Author: "auther author"},
-  //   {Description: "book description placeholder, will replace with blurb of book. will be a longer section"},
-  //   {Year: "2xxx"},
-  //   {Pages: "300"},
-  //   {Link: "link to buy the book"}
-  // ]
-  function processBookInfo(){
-    const bookData = JSON.parse(bookJson)
-    const book = [
-      {Author: bookData.contributions[1].author},
-      {Description: bookData.description},
-      {Year: bookData.release_year},
-      {Pages: bookData.pages},
-      {Link: "link to buy the book"}
-    ]
-    setBookInfo(book)
+  // TODO: look at books not filling properly (probably due to not accurate name):
+  // Say Nothing, 2666, The Year of Magical Thinking, Outline, Evicted, Behind the Beautiful Flowers, Hateship, Friendship, Courtship, Loveship, Marriage, Random Family, The  Last Samurai, Sing Unburied Sing, Fun Home, A Visit From the Goon Squad, H is for Hawk, Postwar, The Argonauts, Persepolis, Runaway, The Looming Tower, Nickel and Dimed, The New Jim Crow, All Aunt Hagar's Children, The Copenhagen Trilogy, Septology, Hurricane Season, Frederick Douglass, The Return, The Days of Abandonment, On Beauty, Bring Up the Bodies, Men We Reaped,
+
+  useEffect(() => {
+      setIsLoading(true)
+      axios.get(`http://localhost:3000/${bookTitle}`).then((data) => {
+        parseBookInfo(data.data.data.books)
+        setBookJsonData(data.data.data.books)
+        setIsLoading(false)
+      })     
+  }, [bookTitle])
+
+  function parseBookInfo(bookInfo){
+      const bookData = bookInfo[0]
+      const book = [
+        {Author: bookData.contributions[0].author.name},
+        {Description: bookData.description},
+        {Year: bookData.release_year},
+        {Pages: bookData.pages},
+        {Link: "link to buy the book"}
+      ]
+      setBookInfo(book)
   }
 
   const bookSections = ["Author", "Description", "Year", "Pages", "Link"]
   const progressSections = ["Pages", "Stars"]
   
   return (
-    <div className="book-container">
+    isLoading || !bookJsonData ? (
+      <div className="loading-card">Loading...</div> //TODO: create loading-card
+    ) : (
+      <div className="book-container">
       <div className="book-card card">
         <div className="book-card-header">
           <p>Day {dayNum}</p>
@@ -57,7 +67,7 @@ export default function BookCard(props) {
           <tbody>
               {bookInfo.map((info, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td><b>{bookSections[index]}</b></td>
                     <td className="book-info">{info[`${bookSections[index]}`]}</td>
                   </tr>
@@ -98,5 +108,5 @@ export default function BookCard(props) {
       </div> 
 
     </div> 
-)
+    ))
 }

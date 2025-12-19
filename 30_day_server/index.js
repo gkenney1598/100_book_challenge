@@ -9,36 +9,10 @@ app.use(express.json());
 
 app.use(cors())
 
-//test route
-// app.get("/", (req, res) => res.json({success: "Hello world"}))
-
 app.listen(port, () => console.log(`App listening on port ${port}`))
-
-// const query = () => {
-//     ` {
-//         books(
-//             where:{
-//                 title:{_eq: "My Brilliant Friend"}
-//             }
-//             order_by: {activities_count:desc}
-//             limit: 1
-//         ) {
-//             release_year
-//             contributions{
-//             author{
-//                 name
-//             }
-//             }
-//             pages
-//             description
-//             }
-//     }`
-// }
-
 
 app.get("/:searchtext", async (req, res) => {
     const searchtext = req.params.searchtext;
-    console.log(searchtext)
     q = operationsDoc(searchtext)
     const data = await fetchGraphQL(q, "bookInfo", {})
     res.json(data)
@@ -81,25 +55,3 @@ const operationsDoc = (bookTitle) =>
         pages
         }
     }`;
-
-// function fetchBookInfo() {
-//   return fetchGraphQL(
-//     operationsDoc,
-//     "bookInfo",
-//     {}
-//   );
-// }
-
-// async function startFetchBookInfo() {
-//   const { errors, data } = await fetchBookInfo();
-
-//   if (errors) {
-//     // handle those errors like a pro
-//     console.error(errors);
-//   }
-
-//   // do something great with this precious data
-//   console.log(data);
-// }
-
-// startFetchBookInfo();

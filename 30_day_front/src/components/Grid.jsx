@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import {bookTitles as bookTitles} from '../utils/index.js'
 import BookCard from './BookCard.jsx';
-import axios from 'axios'
+
 
 export default function Grid() {
   const [ savedProgress, setSavedProgress ] = useState(null)
   const [ selectedBook, setSelectedBook ] = useState(null)
-  const [ bookJsonData, setBookJsonData ] = useState(null)
   const completedBooks = Object.keys(savedProgress || {}).filter((val) => {
     const entry = savedProgress[val]
     return entry.isComplete
@@ -31,16 +30,6 @@ export default function Grid() {
     handleSave(index, newObj)
   }
 
-  // React.useEffect(() => {
-
-  // }, [selectedBook])
-  const apiCall = (bookTitle) => {
-    axios.get(`http://localhost:3000/${bookTitle}`).then((data) => {
-      setBookJsonData(data)
-      console.log(data)
-    })
-  }
-
   useEffect(() => {
     if (!localStorage) { return }
     let savedData = {}
@@ -61,7 +50,7 @@ export default function Grid() {
 
         if (bookIndex === selectedBook) {
           return (
-            <BookCard bookTitle={bookTitles[bookIndex]} key={bookIndex} bookIndex={bookIndex} dayNum={dayNum} handleComplete={handleComplete} handleSave={handleSave} savedProgress={savedProgress?.[bookIndex]?.progress} bookInfo={bookJsonData}/>
+            <BookCard bookTitle={bookTitles[bookIndex]} key={bookIndex} bookIndex={bookIndex} dayNum={dayNum} handleComplete={handleComplete} handleSave={handleSave} savedProgress={savedProgress?.[bookIndex]?.progress}/>
           )
         }
 
@@ -69,7 +58,6 @@ export default function Grid() {
           <button onClick={() => {
             if (isLocked) { return }
             setSelectedBook(bookIndex)
-            apiCall(bookTitles[bookIndex])
           }} className={'card book-card ' + (isLocked ? 'inactive' : '')}key={bookIndex}>
             {isLocked ? (
               <i className='fa-solid fa-lock'></i>
